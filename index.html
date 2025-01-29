@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón Flotante WhatsApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .boton-flotante {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .boton-flotante img {
+            width: 35px;
+            height: 35px;
+        }
+
+        .boton-flotante:hover {
+            background-color: #1ebe57;
+        }
+
+        .formulario {
+            display: none;
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 320px;
+            background: url('https://i.ibb.co/ZpzzrmcF/Default-Whats-App-background-for-people-who-lost-it-Requested-by-u-Marvin-der-kuhle.jpg') no-repeat center center;
+            background-size: cover;
+            padding: 20px;
+            padding-bottom: 80px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            font-family: Arial, sans-serif;
+            border: 1px solid #ddd;
+        }
+
+        .formulario header {
+            background: #25d366;
+            color: white;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .formulario header img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .mensaje {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 50px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .formulario input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .formulario .boton-enviar {
+            width: auto;
+            height: 45px;
+            background: #25d366;
+            border: none;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+            padding: 5px 15px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .formulario .boton-enviar img {
+            width: 25px;
+            height: 25px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <button class="boton-flotante" onclick="mostrarFormulario()">
+        <img src="https://i.ibb.co/zTVrJbB7/whatsapp.png" alt="whatsapp" border="0">
+    </button>
+    
+    <div id="formulario" class="formulario">
+        <header>
+            <img src="https://i.ibb.co/zTVrJbB7/whatsapp.png" alt="whatsapp" border="0">
+            Whatsapp
+        </header>
+        <div class="mensaje">Hola! Para más información, deja tus datos.</div>
+        <input type="text" id="nombre" placeholder="Tu nombre" required>
+        <input type="email" id="correo" placeholder="Tu correo" required>
+        <input type="text" id="telefono" placeholder="Tu teléfono" required>
+        <input type="hidden" id="origen" value="Vertice Promo Wapp">
+        <button class="boton-enviar" onclick="enviarAWhatsApp()">
+            Iniciar Chat <img src="https://i.ibb.co/kgqbkrMX/Icono-Enviar.png" alt="enviar" border="0">
+        </button>
+    </div>
+    
+    <script>
+        function mostrarFormulario() {
+            var form = document.getElementById("formulario");
+            form.style.display = "block";
+        }
+
+        function enviarAWhatsApp() {
+            var nombre = document.getElementById("nombre").value;
+            var correo = document.getElementById("correo").value;
+            var telefono = document.getElementById("telefono").value;
+            var origen = document.getElementById("origen").value;
+
+            if (nombre && correo && telefono) {
+                var mensaje = "Hola! quisiera saber más sobre la promoción de Vértice Narvarte.\n\n" +
+                              "Nombre: " + nombre + "\n" +
+                              "Correo: " + correo + "\n" +
+                              "Teléfono: " + telefono + "\n" +
+                              "Origen: " + origen;
+                
+                var url = "https://wa.me/1234567890?text=" + encodeURIComponent(mensaje);
+                window.open(url, "_blank");
+            } else {
+                alert("Por favor, completa todos los campos.");
+            }
+        }
+    </script>
+    
+</body>
+</html>
