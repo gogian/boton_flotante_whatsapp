@@ -158,13 +158,8 @@
             var origen = document.getElementById("origen").value;
 
             if (nombre && correo && telefono) {
-                var mensaje = "Hola! quisiera saber más sobre la promoción de Vértice Narvarte.\n\n" +
-                              "Nombre: " + nombre + "\n" +
-                              "Correo: " + correo + "\n" +
-                              "Teléfono: " + telefono + "\n" +
-                              "Origen: " + origen;
-                
-                var url = "https://wa.me/1234567890?text=" + encodeURIComponent(mensaje);
+                var mensaje = "Hola! quisiera saber más sobre la promoción de Vértice Narvarte.\n\n"                
+                var url = "https://wa.me/+5215632202423?text=" + encodeURIComponent(mensaje);
                 window.open(url, "_blank");
             } else {
                 alert("Por favor, completa todos los campos.");
